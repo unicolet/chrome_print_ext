@@ -1,0 +1,88 @@
+<html>
+<head>
+<style>
+* {
+font-family: arial, helvetica, serif;
+}
+</style>
+<title>Mappu Print Options</title>
+</head>
+<script type="text/javascript">
+
+var option_names=["title","ol_id","offset_top"];
+var option_defaults=[undefined,"olmap",45];
+// Saves options to localStorage.
+function save_options() {
+  for(var i=0;i<option_names.length;i++) {
+	  localStorage[option_names[i]] = document.getElementById(option_names[i]).value;
+  }
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Opzioni salvate.";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 750);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  for(var i=0;i<option_names.length;i++) {
+	if(localStorage[option_names[i]] || option_defaults[i] )
+	  document.getElementById(option_names[i]).value= ( localStorage[option_names[i]] ? localStorage[option_names[i]] : option_defaults[i] );
+  }
+}
+
+</script>
+
+<body onload="restore_options()">
+<h3>Impostazioni di stampa</h3>
+
+<table border="0">
+<tr>
+	<td>
+		Titolo predefinito:
+	</td>
+	<td>
+		<input type="text" id="title" size="30">
+	</td>
+<tr>
+	<td colspan="2">
+		<span style="font-size:smaller;">Se si desidera usare un titolo comune in tutte le stampe e' possibile
+		settarlo nella casella di testo qui sopra.</span>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+	&nbsp;
+	</td>
+<tr>
+<tr>
+	<td colspan="2">
+		Opzioni Avanzate
+	</td>
+<tr>
+<tr>
+	<td style="font-size:smaller;">
+		ID della map OpenLayers:
+	</td>
+	<td style="font-size:smaller;">
+		<input type="text" id="ol_id" size="30">
+	</td>
+<tr>
+<tr>
+	<td style="font-size:smaller;">
+		Offset top:
+	</td>
+	<td style="font-size:smaller;">
+		<input type="text" id="offset_top" size="5">
+	</td>
+<tr>
+<tr>
+	<td colspan="2">
+		<button onclick="save_options()">Salva</button> <span id="status" style="color:orange;font-size:smaller;"></span>
+	</td>
+</tr>
+</table>
+</body>
+</html>
