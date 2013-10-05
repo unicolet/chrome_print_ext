@@ -1,6 +1,6 @@
-// Copyright (c) 2011 Umberto Nicoletti. All rights reserved.
-// Use of this source code is licensed under LGPL. 
-// Code copied and then extensively modified from the screenshot Chrome example.
+// Copyright (c) 2011 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 // To make sure we can uniquely identify each screenshot tab, add an id as a
 // query param to the url that displays the screenshot.
@@ -78,7 +78,7 @@ function takeScreenshot() {
   }); 
 };
 
-// Listen for a click on the ext button
+// Listen for a click on the camera icon.  On that click, take a screenshot.
 chrome.browserAction.onClicked.addListener(function(tab) {
   //if (tab.url.match(/code.google.com/)) {
     takeScreenshot();
